@@ -73,8 +73,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Header
-st.markdown('<h1 class="main-header">📄 Resume Formatter</h1>', unsafe_allow_html=True)
-st.markdown('<p class="sub-header">Paste your resume content and get a professionally formatted PDF instantly</p>', unsafe_allow_html=True)
+st.markdown('<h1 class="main-header">📄</h1>', unsafe_allow_html=True)
 
 # Sidebar for API configuration
 with st.sidebar:
@@ -131,7 +130,7 @@ with st.sidebar:
 col1, col2 = st.columns([2, 1])
 
 with col1:
-    st.subheader("📝 Resume Content")
+    st.subheader("📝 Content")
     
     resume_content = st.text_area(
         "Paste your resume content here:",
