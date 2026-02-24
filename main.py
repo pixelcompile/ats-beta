@@ -106,12 +106,7 @@ with st.sidebar:
         st.error("❌ No API Key Found")
         st.warning("Please set OPENAI_API_KEY environment variable")
     
-    model_choice = st.selectbox(
-        "Select AI Model",
-        ["gpt-5.1", "gpt-5", "gpt-5-mini", "gpt-5-nano", "gpt-4o", "gpt-4o-mini"],
-        index=0,
-        help="gpt-5.1 is the best model for coding and agentic tasks. gpt-5-mini and gpt-5-nano are faster, more cost-efficient alternatives.",
-    )
+    model = "gpt-5-nano"
     
     st.markdown("---")
     
@@ -216,7 +211,7 @@ if st.session_state.current_page == 'generator':
                 st.stop()
 
             # Initialize the resume generator
-            generator = ResumeGenerator(api_key=api_key, model=model_choice)
+            generator = ResumeGenerator(api_key=api_key, model=model)
             
             progress_text.text("🤖 Formatting resume with AI...")
             progress_bar.progress(30)
