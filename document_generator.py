@@ -113,14 +113,14 @@ class DocumentGenerator:
             show_projects: Whether to include the projects section
             show_education: Whether to include the education section
             show_certifications: Whether to include the certifications section
-            section_order: List defining the order of sections (default: ['summary', 'education', 'certifications', 'experience', 'skills'])
+            section_order: List defining the order of sections (default: ['summary', 'skills', 'experience', 'education', 'projects'])
             
         Returns:
             BytesIO: PDF file as bytes
         """
         # Default section order if not provided
         if section_order is None:
-            section_order = ['summary', 'education', 'certifications', 'experience', 'skills']
+            section_order = ['summary', 'skills', 'experience', 'education', 'projects']
         buffer = BytesIO()
         doc = SimpleDocTemplate(
             buffer,
@@ -432,14 +432,14 @@ class DocumentGenerator:
             show_projects: Whether to include the projects section
             show_education: Whether to include the education section
             show_certifications: Whether to include the certifications section
-            section_order: List defining the order of sections (default: ['summary', 'education', 'certifications', 'experience', 'skills'])
+            section_order: List defining the order of sections (default: ['summary', 'skills', 'experience', 'education', 'projects'])
             
         Returns:
             BytesIO: DOCX file as bytes
         """
         # Default section order if not provided
         if section_order is None:
-            section_order = ['summary', 'education', 'certifications', 'experience', 'skills']
+            section_order = ['summary', 'skills', 'experience', 'education', 'projects']
         buffer = BytesIO()
         doc = Document()
         
