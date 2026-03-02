@@ -752,6 +752,53 @@ class DocumentGenerator:
         doc.build(elements)
         buffer.seek(0)
         return buffer
+
+    @staticmethod
+    def create_pdf_from_text(resume_text: str, font_choice: str = "Professional", color_scheme: str = "Blue Professional") -> BytesIO:
+        """
+        Create a simple, professional PDF from raw resume text without changing content.
+
+        This preserves the original text and basic paragraph breaks.
+        """
+        buffer = BytesIO()
+        doc = SimpleDocTemplate(
+            buffer,
+            pagesize=letter,
+            rightMargin=0.75*inch,
+            leftMargin=0.75*inch,
+            topMargin=0.5*inch,
+            bottomMargin=0.5*inch
+        )
+
+        # Choose fonts similar to other generators
+        if font_choice == "Modern":
+            body_font = 'Helvetica'
+        elif font_choice == "Classic":
+            body_font = 'Times-Roman'
+        else:
+            body_font = 'Times-Roman'
+
+        normal_style = ParagraphStyle(
+            'NormalText',
+            fontName=body_font,
+            fontSize=10,
+            leading=14,
+            alignment=TA_LEFT,
+        )
+
+        elements = []
+
+        # Split into paragraphs by double newlines; preserve single newlines as line breaks
+        paragraphs = [p.strip() for p in resume_text.split('\n\n') if p.strip()]
+        for para in paragraphs:
+            # Replace single newlines with <br/> to keep line breaks inside a paragraph
+            safe_para = sanitize_text(para).replace('\n', '<br/>')
+            elements.append(Paragraph(safe_para, normal_style))
+            elements.append(Spacer(1, 0.08*inch))
+
+        doc.build(elements)
+        buffer.seek(0)
+        return buffer
     
     @staticmethod
     def create_qa_text_file(recruiter_qa: List[Dict[str, str]]) -> str:
