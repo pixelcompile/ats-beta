@@ -106,7 +106,7 @@ with st.sidebar:
         st.error("❌ No API Key Found")
         st.warning("Please set OPENAI_API_KEY environment variable")
     
-    model = "gpt-5-nano"
+    model = "gpt-5-mini"
     
     st.markdown("---")
     
