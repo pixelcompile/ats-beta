@@ -11,10 +11,9 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 
-st.set_page_config(page_title="Resume Formatter", page_icon="📄", layout="wide")
+st.set_page_config(page_title="Formatter", page_icon="📄", layout="wide")
 
-st.title("📄 Professional Resume Formatter")
-st.markdown("Paste your resume text. LLM analyzes and formats it professionally as PDF.")
+st.title("📄 🤞")
 
 # Sidebar configuration
 with st.sidebar:
@@ -41,9 +40,9 @@ with st.sidebar:
 col_input, col_preview = st.columns([1.5, 1])
 
 with col_input:
-    st.subheader("📝 Resume Input")
+    st.subheader("📝 Input")
     resume_text = st.text_area(
-        "Paste your resume (plain text):",
+        "",
         height=450,
         placeholder="John Doe\nEmail: john@example.com\nPhone: 555-1234\n\nProfessional Summary:\nExperienced software engineer...",
     )
