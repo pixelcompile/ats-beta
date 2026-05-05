@@ -79,8 +79,9 @@ class ResumeGenerator:
 
 **INSTRUCTIONS:**
 - Identify sections such as contact info, professional summary, skills, experience, education, certifications, and projects based on headings or content.
-- Do not rewrite, summarize, or modify any part of the original text; simply assign the text exactly as-is to the appropriate fields in JSON.
-- Preserve all line breaks, bullets, and formatting from the input within each section's value.
+- NEVER rewrite, rephrase, summarise, improve, or modify any word. Copy every field value VERBATIM from the input.
+- Preserve the exact wording, capitalisation, punctuation, and numbers from the original text.
+- Preserve all bullets and formatting from the input within each section's value.
 - If a section is missing, the corresponding JSON field should be empty or omitted.
 - Return only valid JSON.
 
@@ -130,7 +131,7 @@ class ResumeGenerator:
 }}"""
         
         resume_data = self._chat_completion_json(
-            system_prompt="You are a professional resume parser and formatter. Extract and structure resume content professionally. Return only valid JSON.",
+            system_prompt="You are a resume parser. Your only job is to read the resume text and assign each piece of text to the correct JSON field WITHOUT changing, rewording, summarising, or improving anything. Copy text verbatim. Return only valid JSON.",
             user_prompt=user_prompt,
             max_tokens=3000,
         )

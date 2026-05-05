@@ -309,7 +309,7 @@ class DocumentGenerator:
                     # Achievements
                     if job.get('achievements'):
                         for achievement in job['achievements']:
-                            elements.append(Paragraph(f"{sanitize_text(achievement)}", bullet_style))
+                            elements.append(Paragraph(f"• {sanitize_text(achievement)}", bullet_style))
 
         def add_projects_section():
             if show_projects and resume_data.get('projects'):
@@ -326,10 +326,10 @@ class DocumentGenerator:
                     # Bullet points (like experience achievements)
                     if project.get('bullets'):
                         for bullet in project['bullets']:
-                            elements.append(Paragraph(f"{sanitize_text(bullet)}", bullet_style))
+                            elements.append(Paragraph(f"• {sanitize_text(bullet)}", bullet_style))
                     # Fallback to description if bullets don't exist (backward compatibility)
                     elif project.get('description'):
-                        elements.append(Paragraph(f"{sanitize_text(project['description'])}", bullet_style))
+                        elements.append(Paragraph(f"• {sanitize_text(project['description'])}", bullet_style))
 
         def add_education_section():
             if show_education and resume_data.get('education'):
